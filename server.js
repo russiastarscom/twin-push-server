@@ -15,9 +15,18 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // ── VAPID — из переменных окружения ────────────────────────
-const VAPID_PUBLIC  = process.env.VAPID_PUBLIC_KEY  || 'BOOU6b6ya9KiSlhhIE1Lnfk00x3aH7vb5hnTKZQ762FeJMsrPKGhte2J7RxiQw7pvRUF-w5C9g7TYLv17b02plo';
-const VAPID_PRIVATE = process.env.VAPID_PRIVATE_KEY || 's5CmH9WloUqrBuRa8p1aepBirDlbkFONZaDQwwR4-Rc';
+const VAPID_PUBLIC  = process.env.VAPID_PUBLIC_KEY  || 'BANapkW0GhUBLNbQBvsZbHBdcjGm_kVIifEYNBsivgzSkYztpF37z1Ij7YvX3s03J-6RRvNE-PvZ5K2JJVfS_vQ';
+const VAPID_PRIVATE = process.env.VAPID_PRIVATE_KEY || 'lMV3yjtcsVZ_ZNwq4XzjirmJIMCht3xWtCGGPA0zkXU';
 const VAPID_EMAIL   = process.env.VAPID_EMAIL       || 'mailto:admin@twin.app';
+
+
+// Проверяем длину приватного ключа ДО вызова setVapidDetails
+const _privCheck = Buffer.from(VAPID_PRIVATE.replace(/-/g, "+").replace(/_/g, "/") + "==", "base64").length;
+if (_privCheck < 31 || _privCheck > 33) {
+    console.error(`[Server] FATAL: VAPID_PRIVATE_KEY неверный (${_privCheck} байт, нужно 32).`);
+    console.error("[Server] Сгенерируйте новую пару: npx web-push generate-vapid-keys");
+    process.exit(1);
+}
 
 webpush.setVapidDetails(VAPID_EMAIL, VAPID_PUBLIC, VAPID_PRIVATE);
 
