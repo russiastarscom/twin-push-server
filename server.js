@@ -21,9 +21,9 @@ app.use(bodyParser.json());
 //   VAPID_PRIVATE_KEY = <приватный ключ>
 //   VAPID_EMAIL       = mailto:твой@email.com
 webpush.setVapidDetails(
-    process.env.VAPID_EMAIL       || 'mailto:admin@twin.app',
-    process.env.VAPID_PUBLIC_KEY  || 'ЗАМЕНИ_НА_СВОЙ',
-    process.env.VAPID_PRIVATE_KEY || 'ЗАМЕНИ_НА_СВОЙ'
+    'mailto:admin@twin.app',
+    'BHWhY-ozjg5GkVLxFhhG_VEtj198PkvEjRtTDSfOMtNKGr1RpX_ELO9YAQChg7E0gLIrERJW0LzolDkkD0RBzbM',
+    'Qr_85qQc_uWO8xT8nJ9g7Zx7v5_SoKC2180HH6IuuzI'
 );
 
 // ── Хранилище подписок (в памяти) ───────────────────────
