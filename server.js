@@ -15,8 +15,8 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // ── VAPID — из переменных окружения ────────────────────────
-const VAPID_PUBLIC  = process.env.VAPID_PUBLIC_KEY  || 'BHWhY-ozjg5GkVLxFhhG_VEtj198PkvEjRtTDSfOMtNKGr1RpX_ELO9YAQChg7E0gLIrERJW0LzolDkkD0RBzbM';
-const VAPID_PRIVATE = process.env.VAPID_PRIVATE_KEY || 'Qr_85qQc_uWO8xT8nJ9g7Zx7v5_SoKC2180HH6IuuzI';
+const VAPID_PUBLIC  = process.env.VAPID_PUBLIC_KEY  || 'BOOU6b6ya9KiSlhhIE1Lnfk00x3aH7vb5hnTKZQ762FeJMsrPKGhte2J7RxiQw7pvRUF-w5C9g7TYLv17b02plo';
+const VAPID_PRIVATE = process.env.VAPID_PRIVATE_KEY || 's5CmH9WloUqrBuRa8p1aepBirDlbkFONZaDQwwR4-Rc';
 const VAPID_EMAIL   = process.env.VAPID_EMAIL       || 'mailto:admin@twin.app';
 
 webpush.setVapidDetails(VAPID_EMAIL, VAPID_PUBLIC, VAPID_PRIVATE);
